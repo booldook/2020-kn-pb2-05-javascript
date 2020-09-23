@@ -12,10 +12,11 @@
 <body>
 	<div class="container">
 		<div class="bts text-center p-5">
-			<button class="btn btn-primary">내 데이터 가져오기</button>
-			<button class="btn btn-success">선생님 데이터 가져오기</button>
+			<button class="btn btn-primary" id="btnMy">내 데이터 가져오기</button>
+			<button class="btn btn-success" id="btnTeacher">선생님 데이터 가져오기</button>
+			<button class="btn btn-info" id="btnWeather">서울 날씨 가져오기</button>
 		</div>
-		<table>
+		<table class="table" id="scoreTbl">
 			<thead>
 				<tr>
 					<th>번호</th>
@@ -27,6 +28,25 @@
 			</thead>
 			<tbody>
 
+			</tbody>
+		</table>
+		<!-- table.table#weatherTbl>thead>tr>th{구분}+th{내용}^^tbody>tr>td{기온}+td^tr>td{날씨}+td -->
+		<table class="table table-bordered text-center mt-5" id="weatherTbl">
+			<thead class="thead-dark">
+				<tr>
+					<th>구분</th>
+					<th>내용</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>기온</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>날씨</td>
+					<td></td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

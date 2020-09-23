@@ -1,16 +1,16 @@
 {
 	"students": [{
-		"name": "홍 길동",
+		"name": "심아현",
 		"kor": 95,
 		"eng": 80,
 		"math": 92
 	}, {
-		"name": "홍 길순",
+		"name": "강예인",
 		"kor": 90,
 		"eng": 75,
 		"math": 90
 	}, {
-		"name": "홍 길만",
+		"name": "김연이",
 		"kor": 65,
 		"eng": 85,
 		"math": 88
