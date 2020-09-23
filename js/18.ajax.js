@@ -36,6 +36,8 @@ function onWeather() {
 	};
 	var success = function(r) {
 		console.log(r);
+		$("#weatherTbl .temp-td").html(r.main.temp+'도 (체감온도: '+r.main.feels_like+'도)');
+		$("#weatherTbl .weather-td").html(r.weather[0].main+' ('+r.weather[0].description+')');
 	}
 	$.get(url, data, success);
 }
