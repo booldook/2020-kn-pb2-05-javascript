@@ -1,19 +1,30 @@
+function dataMaker(r){
+	var i, html = '';
+	for(i in r.students) {
+		html += '<tr>';
+		html += '<td>'+ (Number(i)+1) +'</td>';
+		html += '<td>'+r.students[i].name+'</td>';
+		html += '<td>'+r.students[i].kor+'점</td>';
+		html += '<td>'+r.students[i].eng+'점</td>';
+		html += '<td>'+r.students[i].math+'점</td>';
+		html += '</tr>';
+	}
+	$("#scoreTbl tbody").empty();
+	$("#scoreTbl tbody").append(html);
+}
+
 function onAjax() {
 	$.ajax({
 		type: 'get',
 		dataType: 'json',
 		url: '../json/score.json',
-		success: function(r){
-			console.log(r);
-		}
+		success: dataMaker
 	});
 }
 
+// $.get(url, sendData, callBack);
 function onAjaxTeacher() {
-	// $.get(url, sendData, callBack);
-	$.get('http://192.168.0.14:5500/json/score.json', function(r){
-		console.log(r);
-	});
+	$.get('http://192.168.0.14:5500/json/score.json', dataMaker);
 }
 
 function onWeather() {
