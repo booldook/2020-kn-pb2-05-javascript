@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>크기/위치를 알아보자</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<style>
+		body {height: 5000px;}
+		.wrapper {max-width: 800px; margin: auto; border: 10px solid blue; margin-top: 100px; position: relative;}
+		.box {width: 300px; height: 300px; margin: 20px auto; padding: 30px; border: 10px solid red; background-color: darkorange;}
+		.stage {margin: auto; max-width: 300px;}
+		.box2 {background-color: darkred; position: absolute; top: 100px; left: 30px; width: 200px; height: 200px; color: #fff; padding: 10px;}
+		.box3 {width: 100px; height: 100px; background-color: black; color: #fff; top: 10px; right: 10px; position: fixed; display: flex; justify-content: center; align-items: center;}
+	</style>
+	<script src="../js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="box">
+			width: 300px <br>
+			height: 300px <br>
+			margin: 20px auto <br>
+			padding: 30px <br>
+			border: 10px <br>
+		</div>
+		<div class="stage">
+
+		</div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+	</div>
+	<script>
+		// innerWidth() / innerWidth(200)
+		// offset().top / offset({top: 30})
+		
+		var html  = ' width: ' + $(".box").width();
+		html += ' <br> innerWidth: ' + $(".box").innerWidth();
+		html += ' <br> outerWidth: ' + $(".box").outerWidth();
+		html += ' <br> outerWidth(true): ' + $(".box").outerWidth(true);
+		html += ' <br> height: ' + $(".box").height();
+		html += ' <br> innerHeight: ' + $(".box").innerHeight();
+		html += ' <br> outerHeight: ' + $(".box").outerHeight();
+		html += ' <br> outerHeight(true): ' + $(".box").outerHeight(true);
+		$(".stage").html(html);
+
+		html  = 'position().left: ' + $(".box2").position().left;
+		html += '<br>position().top: ' + $(".box2").position().top;
+		html += '<br>offset().left: ' + $(".box2").offset().left;
+		html += '<br>offset().top: ' + $(".box2").offset().top;
+		$(".box2").html(html);
+
+		$(window).scroll(onScroll).trigger("scroll");
+		function onScroll(e) {
+			console.log(e);
+			$(".box3").html($(this).scrollTop());
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sticky 구현</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<style>
+		.wrapper {margin: auto; max-width: 800px;}
+		.page {height: 100vh;}
+		.page.prd-wrapper {height: auto; display: flex; justify-content: space-between;}
+		.prd-wrap {border: 10px solid red; flex: 60% 0 0; display: flex; flex-wrap: wrap;}
+		.prd-title {background-color: #555; flex: 30% 0 0; display: flex;}
+		.box {flex: calc(50% - 32px) 0 0; height: 400px; margin: 16px; border: 10px solid orange;}
+		.prd-title .title {width: 100%; height: 100vh; display: flex; align-items: center; border: 1px solid red; top: 0;}
+	</style>
+	<script src="../js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<section class="page"></section>
+		<section class="page prd-wrapper">
+			<div class="prd-wrap">
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+			</div>
+			<div class="prd-title">
+				<h1 class="title">제목</h1>
+			</div>
+		</section>
+		<section class="page"></section>
+	</div>
+	<script>
+		var winSct;	// $(window).scrollTop(); 	-> scroll()
+		var winWid;	// $(window).outerWidth();	-> resize()
+		var winHei;	// $(window).outerHeight();	-> resize()
+		var pageTop = [];
+		var titleLt;
+		var titleWid;
+		$(window).resize(onResize).trigger("resize");
+		$(window).scroll(onScroll).trigger("scroll");
+		function onResize(e) {
+			winWid = $(this).outerWidth();
+			winHei = $(this).outerHeight();
+			onPageSet();
+			console.log(winWid, winHei, winSct, pageTop);
+		}
+		function onScroll(e) {
+			winSct = $(this).scrollTop();
+			console.log(winWid, winHei, winSct, pageTop);
+			if(winSct < pageTop[1]) {
+				$(".prd-title").css({"align-items": "flex-start"});
+				$(".prd-title .title").css({"position": "static"});
+			}
+			else if(winSct >= pageTop[1] && winSct < pageTop[2] - winHei) {
+				$(".prd-title .title").css({"position": "fixed", "width": titleWid+"px"});
+			}
+			else {
+				$(".prd-title").css({"align-items": "flex-end"});
+				$(".prd-title .title").css({"position": "static"});
+			}
+		}
+		function onPageSet() {
+			for(var i=0; i<$(".page").length; i++) {
+				pageTop[i] = $(".page").eq(i).offset().top;
+			}
+			titleWid = $(".prd-title").outerWidth();
+		}
+	</script>
+</body>
+</html>

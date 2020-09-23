@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600&display=swap');
+
+.btn-eee {padding: 8px 16px; border: 1px solid #eee; background-color: #eee; color: #444; border-radius: 3px; font-size: 12px; font-weight: 500;}
+.btn-ghost {padding: 8px 16px; border: 1px solid #fff; background-color: transparent; font-size: 14px; font-weight: 500; color: #fff; animation-name: none; animation-duration: 0.3s;}
+.btn-ghost:hover {animation-name: btnGhost;}
+.btn-ghost.dark {border: 1px solid #111; color: #111;}
+.btn-ghost.dark:hover {animation-name: btnGhostDark;}
+@keyframes btnGhost {
+	0% {background-color: transparent; color: #fff;}
+	50% {background-color: #fff; color: #000;}
+	100% {background-color: transparent; color: #fff;}
+}
+@keyframes btnGhostDark {
+	0% {background-color: transparent; color: #111;}
+	50% {background-color: #111; color: #f8f8f8;}
+	100% {background-color: transparent; color: #111;}
+}
+.btn-ghost.bar {display: flex; align-items: center;}
+.btn-ghost.bar:hover::after {transform: scaleX(0.5);}
+.btn-ghost.bar::after {content: ""; display: block; width: 24px; border-top: 1px solid #222; margin-left: 12px; transition: all 0.5s; transition-delay: 0.3s;}
+.hover-active, .hover-link, .hover-ani, .bar-infinity {cursor: pointer;}
+.hover-active::after, .hover-link::after, .hover-ani::after, .bar-infinity::after {display: block; content: ""; border-bottom:2px solid #fff;}
+.hover-active::after {transition: all 0.3s; transform-origin: right; transform: scaleX(1);}
+.hover-active:hover::after {transform-origin: left; transform: scaleX(0);}
+.hover-link::after {transition: all 0.3s; transform-origin: left; transform: scaleX(0);}
+.hover-link:hover::after {transform-origin: right; transform: scaleX(1);}
+.hover-ani::after {animation-name: none; animation-duration: 0.5s;}
+.hover-ani:hover::after {animation-name: hoverAni;}
+.bar-infinity::after {animation-name: hoverAni; animation-duration: 2s; animation-iteration-count: infinite; animation-direction: reverse; width: 60%;}
+@keyframes hoverAni {
+	0% {transform-origin: right; transform: scaleX(1);}
+	49% {transform-origin: right;}
+	50% {transform-origin: left; transform: scaleX(0);}
+	99% {transform-origin: left;}
+	100% {transform: scaleX(1);}
+}
+
+.top-wrap {display: flex; justify-content: space-between; font-family: 'Mukta', sans-serif;  font-weight: 500; letter-spacing: -1; background-color: #222; color: #f8f8f8; 
+	padding:4px 16px 8px 16px; flex-wrap: wrap;}
+.top-lt {display: flex; align-items: center; position: relative;}
+.top-lt .navi-wrap {display: flex; margin-left: 20px; align-items: center;}
+.top-lt .navi-wrap .navi {margin: 16px; cursor: pointer;}
+.top-lt .navi-wrap .divide {border-left: 1px solid #ccc; margin: -2px 20px 0 20px; height: 14px;}
+.top-lt .fa-bars {font-size: 24px; display: none; cursor: pointer; margin-left: 24px;}
+.top-rt {display: flex; align-items: center;}
+.top-rt .icon {font-size: 24px; padding: 16px;}
+.top-rt .tel-wrap {display: flex; flex-direction: column; align-items: flex-end; padding-left: 16px;}
+.top-rt .tel-wrap div:nth-child(1) {font-size: 18px;}
+.top-rt .tel-wrap div:nth-child(2) {font-size: 14px;}
+.top-rt .fa-phone-volume {display: none;}
+.top-rt .btn-ghost {margin-left: 32px;}
+
+.sub-wrap {height: 300px; background-color: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; font-size: 50px; position: absolute; left: 0; top: 68px; width: 100%;}
+
+
+
+
+/** 반응형 *********************/
+@media screen and (max-width: 1399px) {
+	.top-lt .navi-wrap {display: none;}
+	.top-lt .fa-bars {display: block;}
+}
+
+@media screen and (max-width: 991px) {
+	.banner-frame {display: none;}
+	.cont-wrap {padding: 16px 24px;}
+	.top-rt .tel-wrap {display: none;}
+	.top-rt .fa-phone-volume {display: block;}
+	.btn-wrap .lists {display: none;}
+	.btn-wrap .btn-eee {display: block;}
+	.sns-wrap .icon-scroll {display: none;}
+}
+
+@media screen and (max-width: 767px) {
+	.top-rt .btn-ghost {display: none;}
+	.sns-wrap .bar {display: none;}
+	.sns-wrap .hover-link {margin-left: 32px;}
+}

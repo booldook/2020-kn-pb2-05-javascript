@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Margin 상쇄</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<style>
+		.wrapper {max-width: 800px; margin: auto; border: 5px solid blue; display: flex; flex-wrap: wrap; padding: 8px;}
+		.box {height: 100px; border: 10px solid red; background-color: darkorange; margin: 8px; flex: calc(25% - 16px) 0 0;}
+	</style>
+</head>
+<body>
+	<!-- 
+		block tag를 여러개 쌓아놓을 때 상, 하 마진은 서로 상쇄된다.
+	 -->
+	<div class="wrapper clearfix">
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+	</div>
+</body>
+</html>

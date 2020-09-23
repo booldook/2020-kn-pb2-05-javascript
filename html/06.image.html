@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이미지의 높이를 구하자</title>
+	<style>
+		.box {width: 200px; height: 200px; background: darkorchid;}
+	</style>
+	<script src="../js/jquery-3.5.1.min.js"></script>
+	<script src="../js/imagesloaded.pkgd.min.js"></script>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="img-wrap">
+		<img src="../img/img-1.jpg" class="img">
+	</div>
+	<script>
+		console.log(	$(".box").innerHeight()	);
+
+		$(".img").imagesLoaded(function(){
+			console.log(	$(".img").innerHeight()	);
+		});
+
+		/* setTimeout(function() {
+			console.log(	$(".img").innerHeight()	);
+		}, 1000); */
+	</script>
+</body>
+</html>

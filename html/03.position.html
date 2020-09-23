@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>position을 알아보자</title>
+	<style>
+		.wrap {background-color: red; width: 200px; height: 200px; position: absolute; left: 100px; top: 100px; z-index: 1;}
+		.box {background-color: darkorange; position: absolute; top: 0; left: 0; width: 100px; height: 100px; z-index: 3;}
+
+		.wrap2 {position: absolute; width: 200px; height: 200px; background-color: deepskyblue; top: 170px; left: 170px; z-index: 2;}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="wrap">
+			<div class="box"></div>
+		</div>
+		<div class="wrap2">
+			<div class="box2"></div>
+		</div>
+	</div>
+</body>
+</html>

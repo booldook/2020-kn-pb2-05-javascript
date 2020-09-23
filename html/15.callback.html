@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Callback</title>
+	<script src="../js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<div class="wrap"></div>
+	<div class="list">A</div>
+	<div class="list">B</div>
+	<div class="list">C</div>
+	<script>
+		
+		function fullName(fName, lName, cb) {
+			var name = fName + " " + lName;
+			cb(name);
+		}
+
+		fullName('홍', '길동', function(n){
+			$('.wrap').append('<div>'+n+'</div>');
+		});
+
+	</script>
+</body>
+</html>
+

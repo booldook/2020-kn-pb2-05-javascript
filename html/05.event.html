@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이벤트 버블링</title>
+	<style>
+		body {height: 100vh;}
+		body, .wrapper, .wrap {display: flex; justify-content: center; align-items: center;}
+		.wrapper {width: 600px; height: 600px; background-color: red;}
+		.wrap {width: 400px; height: 400px; background-color: darkorange;}
+		.cont {width: 200px; height: 200px; background-color: darkolivegreen;}
+	</style>
+	<script src="../js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="wrap">
+			<div class="cont">
+				
+			</div>
+		</div>
+	</div>
+	<script>
+		$(".wrapper").click(function(e){
+			console.log(".wrapper 클릭!");
+		});
+		$(".wrap").click(function(e){
+			e.stopPropagation();
+			console.log(".wrap 클릭!");
+		});
+		$(".cont").click(function(e){
+			e.stopPropagation();
+			console.log(".cont 클릭!");
+		});
+	</script>
+</body>
+</html>

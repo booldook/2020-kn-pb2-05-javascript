@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Interval / Array</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/base.css">
+	<style>
+		.wrapper {max-width: 1000px; margin: auto; display: flex; flex-wrap: wrap; padding: 8px; border: 2px solid #333;}
+		.box {flex: calc(25% - 16px) 0 0; margin: 8px; border: 2px solid #aaa; height: 200px; position: relative;}
+		.bg {width: 100%; height: 100%; position: absolute; opacity: 0; transition: all 0.5s; display: flex; align-items: center; justify-content: center; color: #fff;}
+		.red {background-color: red; opacity: 1;}
+		.green {background-color: green;}
+		.blue {background-color: blue;}
+		.orange {background-color: orange;}
+		.purple {background-color: purple;}
+		.pager-wrap {position: absolute; z-index: 9999; display: flex; top: 4px; left: 20px;}
+		.pager {font-size: 30px; cursor: pointer; color: #222;}
+		.pager.active {color: #fff;}
+	</style>
+	<script src="../js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="box">
+			<div class="bg red">
+				<a href="//naver.com" target="_blank">네이버</a>
+			</div>
+			<div class="bg green">
+				<a href="//daum.net" target="_blank">다음</a>
+			</div>
+			<div class="bg blue">
+				<a href="//google.com" target="_blank">구글링크</a>
+			</div>
+			<div class="bg orange">
+				<a href="//yahoo.com" target="_blank">야후링크</a>
+			</div>
+			<div class="bg purple">
+				<a href="//w3schools.com" target="_blank">w3링크</a>
+			</div>
+			<div class="pager-wrap">
+				<div class="pager active">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+			</div>
+		</div>
+		<div class="box">
+			<div class="bg red"></div>
+			<div class="bg blue"></div>
+			<div class="bg orange"></div>
+			<div class="bg purple"></div>
+			<div class="pager-wrap">
+				<div class="pager active">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+			</div>
+		</div>
+		<div class="box">
+			<div class="bg red"></div>
+			<div class="bg orange"></div>
+			<div class="bg purple"></div>
+			<div class="pager-wrap">
+				<div class="pager active">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+			</div>
+		</div>
+		<div class="box">
+			<div class="bg red"></div>
+			<div class="bg green"></div>
+			<div class="bg orange"></div>
+			<div class="bg purple"></div>
+			<div class="pager-wrap">
+				<div class="pager active">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+			</div>
+		</div>
+		<div class="box">
+			<div class="bg red"></div>
+			<div class="bg green"></div>
+			<div class="bg blue"></div>
+			<div class="bg orange"></div>
+			<div class="bg purple"></div>
+			<div class="pager-wrap">
+				<div class="pager active">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+			</div>
+		</div>
+		<div class="box">
+			<div class="bg red"></div>
+			<div class="bg orange"></div>
+			<div class="bg purple"></div>
+			<div class="pager-wrap">
+				<div class="pager active">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+			</div>
+		</div>
+		<div class="box">
+			<div class="bg red"></div>
+			<div class="bg green"></div>
+			<div class="bg orange"></div>
+			<div class="bg purple"></div>
+			<div class="pager-wrap">
+				<div class="pager active">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+			</div>
+		</div>
+		<div class="box">
+			<div class="bg red"></div>
+			<div class="bg green"></div>
+			<div class="bg blue"></div>
+			<div class="bg orange"></div>
+			<div class="bg purple"></div>
+			<div class="pager-wrap">
+				<div class="pager active">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+				<div class="pager">●</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		/*	기능정의
+				1. 박스(.box)안에 다중(여러개)의 그림(.bg)이 존재한다.
+				2. .box에 마우스를 올리면 1번 그림이 보이고 마우스를 내리면 0번 그림이 보인다. (애니메이션으로 작동하길 원함)
+				3. .box에 마우스를 올리고 있는 동안에는 .bg가 일정간격으로 순회(setInterval)하며 보여진다. 
+				4. .box에서 마우스를 내리면 순회하던 동작이 멈춘다(clearInterval)
+				5. .pager를 클릭하면 그 순서의 .bg가 나타난다
+				6. .bg가 나타나면 그 순서에 맞는 .pager가 흰색으로 변한다.
+		*/
+		var boxIdx, bgIdx, interval, bgLastIdx;
+		function onInterval() {
+			if(bgIdx == bgLastIdx) bgIdx = 0;
+			else bgIdx++;
+			boxAni();
+		}
+		function boxAni() {
+			$(".box").eq(boxIdx).find(".bg").css({"opacity": 0, "z-index": 1});
+			$(".box").eq(boxIdx).find(".bg").eq(bgIdx).css({"opacity": 1, "z-index": 2});
+			$(".box").eq(boxIdx).find(".pager").removeClass("active");
+			$(".box").eq(boxIdx).find(".pager").eq(bgIdx).addClass("active");
+		}
+		function onBoxOver() {
+			boxIdx = $(this).index();
+			bgIdx = 1;
+			bgLastIdx = $(this).find(".bg").length - 1;
+			boxAni();
+			interval = setInterval(onInterval, 2000);
+		}
+		function onBoxLeave() {
+			bgIdx = 0;
+			boxAni();
+			clearInterval(interval);
+		}
+		function onPagerClick() {
+			bgIdx = $(this).index();
+			boxAni();
+			clearInterval(interval);
+			interval = setInterval(onInterval, 2000);
+		}
+		$(".box").hover(onBoxOver, onBoxLeave);
+		$(".pager").click(onPagerClick);
+	</script>
+</body>
+</html>
