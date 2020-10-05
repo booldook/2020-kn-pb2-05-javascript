@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>rem, em, %, px, vw, vh</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/base.css">
+	<style>
+		html, body {font-size: 16px;}
+		body div {border: 5px solid blue; margin: 16px; }
+		.px {width: 300px; font-size: 1rem}
+		.vw {width: 30vw; font-size: 0.5rem}
+		.vh {width: 50vh; font-size: 1.25rem}
+		.pct {width: 30%; font-size: 1.75rem}
+		.rem {width: 10rem; font-size: 1rem}
+		.em {width: 10em; font-size: 1em}
+
+		.prd {font-size: 1.125rem;}
+		.prd > .title {font-size: 1.5em; padding: 0.5em;}
+		.prd > .price {font-size: 1.25em;}
+
+		@media screen and (max-width: 991px) {
+			html, body {font-size: 24px;}
+			.prd {font-size: 1rem;}
+		}
+		@media screen and (max-width: 768px) {
+			html, body {font-size: 16px;}
+			.prd {font-size: 0.75rem;}
+		}	
+		@media screen and (max-width: 576px) {
+			html, body {font-size: 12px;}
+		}	
+	</style>
+</head>
+<body>
+	<!--
+		1. 절대값: px, rem
+		2. 상대값: vw, vh(브라우저기준), %, em
+	-->
+	<ul class="prd">
+		<div class="title">좋은 상품</div>
+		<div class="price">$10.00</div>
+	</ul>
+	<div class="px">가나다라(px)</div>
+	<div class="rem">가나다라(rem)</div>
+	<div class="em">가나다라(em)</div>
+	<footer style="width: 50%; border: 1px solid red;">
+		<div class="vw">가나다라(vw)</div>
+	</footer>
+	<footer style="width: 50%; border: 1px solid red;">
+		<div class="pct">가나다라(pct)</div>
+	</footer>
+	<div class="vh">가나다라(vh)</div>
+</body>
+</html>
