@@ -23,6 +23,7 @@ function onAjax() {
 }
 
 // $.get(url, sendData, callBack);
+
 function onAjaxTeacher() {
 	$.get('http://192.168.0.14:5500/json/score.json', dataMaker);
 }
