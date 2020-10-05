@@ -1,0 +1,47 @@
+<script>
+	var arr = [];
+	// index로 넣기
+	arr[0] = 'a';
+	arr[1] = 'b';
+	arr[2] = 'c';
+
+	// 재할당 하기
+	arr = ['a', 'b', 'c'];
+
+	// Array.push();
+	arr = [];
+	arr.push('a');
+	arr.push('b');
+	arr.push('c');
+	// console.log(arr);
+	// console.log(arr.pop(), arr);
+	// console.log(arr.pop(), arr);
+	// console.log(arr.pop(), arr);
+
+	arr = [];
+	arr.unshift('a');
+	arr.unshift('b');
+	arr.unshift('c');
+	// console.log(arr);
+	// console.log(arr.shift(), arr);
+	// console.log(arr.shift(), arr);
+	// console.log(arr.shift(), arr);
+
+
+	// Array.splice(작업할idx, 삭제하고 가져올 갯수, 추가할 값)
+	arr = ['a', 'b', 'c'];
+	console.log(arr.splice(1, 1), arr);
+
+	arr = ['딸기', '바나나', '멜론'];
+	arr.splice(1, 1, '포도');
+	console.log(arr); // ['딸기', '포도', '멜론']
+
+	arr = ['딸기', '바나나', '멜론'];
+	arr.splice(2, 0, '포도', '자두', '수박');
+	console.log(arr); // ['딸기', '바나나', '포도', '자두', '수박', '멜론']
+
+	// Array.slice(시작idx, 직전idx) 기존배열을 건드리지 않고 새로운 배열로 추출
+	arr = ['딸기', '바나나', '포도', '자두', '수박', '멜론'];
+	var arr2 = arr.slice(2, 4);
+	console.log(arr, arr2);
+</script>
