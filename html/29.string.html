@@ -7,7 +7,8 @@
 </head>
 <body>
 	<div onclick="alert('헬로\' 월드'); console.log('hi'); location.href = 'https://naver.com'; ">네이버</div>
-
+	<input type="text" id="userpw">
+	<button id="btnSend">가입</button>
 <script>
 	var log = console.log;
 	var str = 'Hello World Wide Web';
@@ -40,16 +41,40 @@
 	log( str.endsWith('b') );
 
 
-	// 문자열 치환
-	var str = "Hello World Wide Web";
-
-	var newStr = str.replace('Hello', 'Hi!');
-	console.log(newStr);
-
+	// 특수문자 표현 - \'  \"  \\  \n (개행)  \t (탭)
 	var str =  '"Hello" \\ \'World Wide Web\'';
 	console.log(str);
+	// alert('hello\nworld');	
 
 
+	// 문자열 치환
+	var str = "Hello World Wide wide wide WIDE Web";
+
+	var newStr = str.replace(/W/g, 'w');
+	console.log(newStr);
+	
+	var newStr = str.replace(/wide/gi, 'global');
+	console.log(newStr);
+
+	// 정규표현식 맛보기
+	console.clear();
+	var str = '2who is who';
+	var regStr = str.replace(/who$/g, 'man');
+	console.log(regStr);
+
+	document.querySelector("#btnSend").addEventListener("click", function(){
+		var userpw = document.querySelector("#userpw").value;
+		
+		// 대문자, 소문자, 숫자, 특수문자 8~15
+		/* var regExp = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+		if(regExp.test(userpw)) alert("잘했어요");
+		else alert("틀렸어요"); */
+		
+		// 이메일
+		var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		if(regExp.test(userpw)) alert("잘했어요");
+		else alert("틀렸어요");
+	});
 </script>
 
 </body>
