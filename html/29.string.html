@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div onclick="alert('헬로\' 월드'); console.log('hi'); location.href = 'https://naver.com'; ">네이버</div>
+
+<script>
+	var log = console.log;
+	var str = 'Hello World Wide Web';
+	
+	// 문자열 길이
+	log( str.length );
+	
+	// 문자열 검색
+	log( str.indexOf('W') );
+	log( str.lastIndexOf('W') );
+	log( str.search('W') );
+
+	// 문자열 추출
+	log( str.slice(1, 8) );				// 첫번째 index에서 두번째 index 직전까지의 문자
+	log( str.substring(1, 8) );		// 첫번째 index에서 두번째 index 직전까지의 문자
+	log( str.substr(1, 8) );			// 첫번째 index에서 두번째 숫자(개수)의 문자
+	log( str.slice(1) );
+	log( str.substring(1) );
+	log( str.substr(1) );
+	log( str.slice() );
+	log( str.substring() );
+	log( str.substr() );
+
+	log( str.slice(-5) );				// 뒤에서 부터 찾아서 가져옴
+	log( str.substring(-5) );		// 음수는 무시
+
+
+	// ES6
+	log( str.startsWith('H') );
+	log( str.endsWith('b') );
+
+
+	// 문자열 치환
+	var str = "Hello World Wide Web";
+
+	var newStr = str.replace('Hello', 'Hi!');
+	console.log(newStr);
+
+	var str =  '"Hello" \\ \'World Wide Web\'';
+	console.log(str);
+
+
+</script>
+
+</body>
+</html>
