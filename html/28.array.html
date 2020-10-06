@@ -30,18 +30,175 @@
 
 	// Array.splice(작업할idx, 삭제하고 가져올 갯수, 추가할 값)
 	arr = ['a', 'b', 'c'];
-	console.log(arr.splice(1, 1), arr);
+	// console.log(arr.splice(1, 1), arr);
 
 	arr = ['딸기', '바나나', '멜론'];
 	arr.splice(1, 1, '포도');
-	console.log(arr); // ['딸기', '포도', '멜론']
+	// console.log(arr); // ['딸기', '포도', '멜론']
 
 	arr = ['딸기', '바나나', '멜론'];
 	arr.splice(2, 0, '포도', '자두', '수박');
-	console.log(arr); // ['딸기', '바나나', '포도', '자두', '수박', '멜론']
+	// console.log(arr); // ['딸기', '바나나', '포도', '자두', '수박', '멜론']
 
 	// Array.slice(시작idx, 직전idx) 기존배열을 건드리지 않고 새로운 배열로 추출
 	arr = ['딸기', '바나나', '포도', '자두', '수박', '멜론'];
 	var arr2 = arr.slice(2, 4);
-	console.log(arr, arr2);
+	// console.log(arr, arr2);
+
+	// Array.concat(연결할 배열);
+	var arr = ['딸기', '바나나', '포도'];
+	var arr2 = ['자두', '수박', '멜론'];
+	var arr3 = arr.concat(arr2);
+	// console.log(arr3);
+
+
+	// 배열의 성질
+	// 1. primmitive type (원시타입- 숫자(Number), 문자(String), 불린(Boolean))
+	var a = 10;
+	var b = a;
+	a = 20;
+	// console.log(a, b);
+
+	// 2. reference type (객체, 배열)
+	var arr = ['딸기', '바나나', '포도'];
+	var arr2 = arr; // softcopy
+	// console.log(arr, arr2);
+
+	arr2.pop();
+	// console.log(arr, arr2);
+
+	// 배열의 hardcopy
+	var arr = ['딸기', '바나나', '포도'];
+	var arr2 = arr.slice();
+	// console.log(arr, arr2);
+	
+	arr.pop();
+	// console.log(arr, arr2);
+
+	var arr = ['딸기', '바나나', '포도'];
+	var arr2 = arr.concat([]);
+	// console.log(arr, arr2);
+	
+	arr.pop();
+	// console.log(arr, arr2);
+
+
+	// 배열의 정렬(sort)
+	var arr = ['a', 'c', 'b', 'f', 'e'];
+	arr.sort();
+	// console.log(arr);
+
+	var arr = [1, 5, 9, 11, 15, 26];
+	arr.sort();
+	// console.log(arr);
+	
+	arr.sort(function(a, b) {
+		return a - b;
+	});
+	// console.log(arr);
+
+
+
+
+	// 배열의 문자로 만들기, 문자를 배열로 만들기
+	arr = ['딸기', '바나나', '포도', '자두', '수박', '멜론'];
+	var str = arr.toString();
+	// console.log(arr, str);
+
+	var str = "딸기-바나나-포도-자두-수박-멜론";
+	var arr = str.split('-');
+	console.log(arr);
+
+	// split 예제
+	var cart = '1/30000/2/60000,5/25000/3/75000';
+	var arr = cart.split(',');
+	console.log(arr);
+
+	var prd = [];
+	prd[0] = arr[0].split('/');
+	prd[1] = arr[1].split('/');
+
+	console.log(prd);
+
+	// TIP : 내가 이름을 주는 경우 - 변수명, 함수명, 함수인자
+	var 변수명;
+	function 함수명(인자명, 인자명) {
+		// 인자/params/argument
+	}
+	var 객체명 = {
+		멤버: 1,
+		멤버2: 2,
+		메소드: function() {
+
+		}
+	}
+	var 제이슨 = {
+		"변수명": "값",
+		"변수명": "값"
+	}
+
+
+	// Array의 테스트(평가) 함수들
+	// forEach, every, some, filter, map
+	// 사용법: arr.every(function(){});
+
+	// 1. forEach() - 배열을 순회하면서 함수를 실행한다.
+	var 배열 = ['딸기', '바나나', '포도', '자두', '수박', '멜론'];
+	배열.forEach(function(v, i){
+		console.log(v, i);
+	});
+	for(var i=0; i<배열.length; i++) {
+		console.log(배열[i], i);
+	}
+
+	// 2. every() - 배열의 모든 요소가 조건에 충족되면 true를 반환, 아니면 false를 반환
+	var arr = [2, 4, 6, 8, 9];
+	var even = arr.every(function(v) {
+		return v % 2 == 0;
+	});
+	// console.log(even);
+
+	// 2. some() - 배열의 요소중 하나라도 조건에 충족되면 true를 반환, 아니면 false를 반환
+	var arr = [2, 4, 6, 8, 9];
+	var evenOne = arr.some(function(v) {
+		return v % 2 == 0;
+	});
+	// console.log(evenOne);
+	
+	// 3. filter() - 배열을 순회하면서 조건에 충족된 요소(true)들만 따로 새로운 배열로 만든다.
+	var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+	var evenArr = arr.filter(function(v) {
+		return (v % 2 == 0);
+	});
+	console.log(evenArr);
+
+	// 4. map() - 배열을 순회하면서 조건의 결과를 따로 새로운 배열로 만든다.
+	var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+	var mapArr = arr.map(function(v) {
+		return (v % 2 == 0);
+	});
+	console.log(mapArr);
+
+	var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+	var pointArr = arr.map(function(v) {
+		return v + 100;
+	});
+	console.log(pointArr);
+
+	var users = [
+		{ id: 1, userid: 'booldook', point: 1000, saleCount: 3, totalPrice: 35000},
+		{ id: 2, userid: 'booldook2', point: 2500, saleCount: 8, totalPrice: 25000},
+		{ id: 3, userid: 'booldook3', point: 700, saleCount: 4, totalPrice: 75000},
+		{ id: 4, userid: 'booldook4', point: 2000, saleCount: 2, totalPrice: 85000}
+	];
+	var pointUsers = users.map(function(v) {
+		v.point += 100;
+		return v;
+	});
+	console.log(pointUsers);
+
+	var saleFour = users.filter(function(v){
+		return v.saleCount >= 4;
+	});
+	console.log(saleFour);
 </script>
