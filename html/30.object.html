@@ -1,0 +1,76 @@
+<script>
+	console.log(this);			// window
+
+	function test() {
+		console.log(this);		// window
+	}
+	test();
+
+	var obj = {
+		a: 'A',
+		b: 'B',
+		c: function() {
+			console.log(this);	// obj
+		},
+		addClass: function(str) {
+
+		}
+	}
+	obj.c();
+	// $(".a").addClass();
+
+	// 객체만들기
+	// 1. Literal 객체 생성 - 재사용불가
+	var obj = {
+		arr: [1, 2, 3],
+		join: function() {
+			return this.arr.join();
+		}
+	}
+	console.log( obj.join() );
+	
+	// 2. Object()를 통해서 생성 - 재사용불가
+	var obj2 = new Object();
+	obj2.arr = [1, 2, 3, 4];
+	obj2.join = function() {
+		return this.arr.join();
+	}
+	console.log( obj2.join() );
+
+	console.clear();
+	var car = {
+		name: null,
+		color: null,
+		drive: function() {
+			console.log(this.name + '이(가) 출발합니다.');
+		},
+		stop: function() {
+			console.log(this.name + '이(가) 멈춥니다.');
+		},
+	}
+
+	var myCar = car;
+	myCar.name = 'sonata';
+	myCar.nickName = '붕붕이';
+	myCar.drive();
+	console.log(myCar.nickName);
+
+	var myCar2 = car;
+	myCar2.name = 'piat';
+	myCar2.nickName = '붕붕이2';
+	myCar2.drive();
+	console.log(myCar2.nickName);
+	console.log(myCar.nickName);
+
+	console.clear();
+	// 3. 재사용 가능한 객체(생성자(constructor) 객체)
+	car3();
+	car4();
+	function car3() {
+		console.log("car3");
+	}
+	var car4 = function() {
+		console.log("car4");
+	}
+
+</script>
