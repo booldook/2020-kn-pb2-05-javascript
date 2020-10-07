@@ -1,4 +1,40 @@
 <script>
+	var Sample = function() {
+		console.log(this);
+		return this;	// 함수 자신
+	}
+
+	function Sample2() {
+		console.log(this);	// Window
+	}
+
+
+	var sample = function(){
+		var a = 10;
+		var b = 20;
+		function hap() {
+			return a + b;
+		}
+		console.log(hap());
+	}
+	sample();
+
+
+
+	var arr = [];
+	arr[0] = 1;
+	arr[1] = 2;
+	var arr2 = new Array();
+	arr2[0] = 'A';
+	arr2[1] = 'B';
+	var arr3 = [1, 2];
+	arr3[1] = 3;
+	arr3[2] = function(){
+		console.log("hi~!!!");
+	}
+	arr3[2]();
+
+
 	console.log(this);			// window
 
 	function test() {
@@ -21,11 +57,10 @@
 
 	// 객체만들기
 	// 1. Literal 객체 생성 - 재사용불가
-	var obj = {
-		arr: [1, 2, 3],
-		join: function() {
-			return this.arr.join();
-		}
+	var obj = {};
+	obj.arr = [1, 2, 3];
+	obj.join = function() {
+		return this.arr.join();
 	}
 	console.log( obj.join() );
 	
@@ -37,7 +72,7 @@
 	}
 	console.log( obj2.join() );
 
-	console.clear();
+	//console.clear();
 	var car = {
 		name: null,
 		color: null,
@@ -62,15 +97,34 @@
 	console.log(myCar2.nickName);
 	console.log(myCar.nickName);
 
-	console.clear();
+	//console.clear();
 	// 3. 재사용 가능한 객체(생성자(constructor) 객체)
 	car3();
-	car4();
 	function car3() {
 		console.log("car3");
 	}
 	var car4 = function() {
 		console.log("car4");
 	}
+	car4();
+
+	console.clear();
+	var Car = function() {
+		this.a = 'A';
+		this.b = 'B';
+		return this;
+	}
+
+	var myCar = new Car();
+	myCar.name = '붕붕이';
+	myCar.a = 'AA';
+	console.log(myCar);
+
+	var myCar2 = new Car();
+	myCar2.name = '봉봉이';
+	console.log(myCar2);
+
+	console.log(myCar.name, myCar2.name);
+	console.log(Car);
 
 </script>
