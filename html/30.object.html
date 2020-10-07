@@ -112,16 +112,22 @@
 	var Car = function() {
 		this.a = 'A';
 		this.b = 'B';
+		Car.prototype.drive = function(){
+			console.log(this.name + "이(가) 달립니다.");
+		}
 		return this;
 	}
 
 	var myCar = new Car();
 	myCar.name = '붕붕이';
 	myCar.a = 'AA';
+	myCar.drive();
+	console.log(myCar.c);
 	console.log(myCar);
 
 	var myCar2 = new Car();
 	myCar2.name = '봉봉이';
+	myCar2.drive();
 	console.log(myCar2);
 
 	console.log(myCar.name, myCar2.name);

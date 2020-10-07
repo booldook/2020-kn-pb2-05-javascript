@@ -1,0 +1,8 @@
+.booldook-wrapper {width: 100%; position: relative;}
+.booldook-wrapper .img {width: 100%;}
+.booldook-wrapper.booldook-hori {}
+.booldook-wrapper.booldook-vert {}
+.booldook-wrapper.booldook-fade {}
+.booldook-wrapper.booldook-hori .booldook-slide {}
+.booldook-wrapper.booldook-vert .booldook-slide {}
+.booldook-wrapper.booldook-fade .booldook-slide {}
