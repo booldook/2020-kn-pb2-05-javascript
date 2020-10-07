@@ -1,8 +1,13 @@
 .booldook-wrapper {width: 100%; position: relative;}
 .booldook-wrapper .img {width: 100%;}
-.booldook-wrapper.booldook-hori {}
+.booldook-wrapper.booldook-hori {display: flex;}
 .booldook-wrapper.booldook-vert {}
 .booldook-wrapper.booldook-fade {}
-.booldook-wrapper.booldook-hori .booldook-slide {}
+.booldook-wrapper.booldook-hori .booldook-slide {flex: 100% 0 0;}
 .booldook-wrapper.booldook-vert .booldook-slide {}
 .booldook-wrapper.booldook-fade .booldook-slide {}
+
+.booldook-btn {position: absolute; font-size: 10rem; color: #fff; 
+	text-shadow: 0 0 0.625rem rgba(0,0,0,0.5); top: 50%; transform: translateY(-50%); z-index: 9999;}
+.booldook-btn.booldook-prev {left: 1rem;} 
+.booldook-btn.booldook-next {right: 1rem;} 
