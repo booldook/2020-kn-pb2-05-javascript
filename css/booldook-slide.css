@@ -7,7 +7,6 @@
 .booldook-wrapper.booldook-vert .booldook-slide {}
 .booldook-wrapper.booldook-fade .booldook-slide {}
 
-.booldook-btn {position: absolute; font-size: 10rem; color: #fff; 
-	text-shadow: 0 0 0.625rem rgba(0,0,0,0.5); top: 50%; transform: translateY(-50%); z-index: 9999;}
+.booldook-btn {position: absolute; font-size: 10rem; color: #fff; cursor: pointer; text-shadow: 0 0 0.625rem rgba(0,0,0,0.5); top: 50%; transform: translateY(-50%); z-index: 9999;}
 .booldook-btn.booldook-prev {left: 1rem;} 
 .booldook-btn.booldook-next {right: 1rem;} 
