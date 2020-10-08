@@ -14,8 +14,7 @@ var Slide = function(arg) {
 
 Slide.prototype.init = function(){
 
-	this.$container.css({ "border": "1px solid red", "position": "relative", /*"overflow": "hidden"*/
-	});
+	this.$container.css({"position": "relative", "overflow": "hidden"});
 	this.$wrapper = $('<div class="booldook-wrapper booldook-'+this.direction+'"></div>').appendTo(this.$container);
 	this.now = 0;
 
@@ -48,12 +47,16 @@ Slide.prototype.onPrevClick= function(e) {
 		this.$wrapper.css("left", -100*this.last+"%");
 	}
 	else this.now--;
-
 	this.ani();
 }
 
 Slide.prototype.onNextClick = function() {
-	console.log("next");
+	if(this.now == this.last) {
+		this.now = 1;
+		this.$wrapper.css("left", 0);
+	}
+	else this.now++;
+	this.ani();
 }
 
 Slide.prototype.ani = function() {
