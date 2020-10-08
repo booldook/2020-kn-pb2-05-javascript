@@ -33,7 +33,11 @@ Slide.prototype.init = function(){
 	
 	this.$btnPrev.click(this.onPrevClick.bind(this));
 	this.$btnNext.click(this.onNextClick.bind(this));
-	
+	this.$container.mouseover(this.onMouseOver.bind(this));
+	this.$container.mouseleave(this.onMouseLeave.bind(this));
+	this.interval = setInterval(this.onInterval.bind(this), this.gapSpeed);
+
+
 	this.startInit();
 }
 
@@ -57,6 +61,17 @@ Slide.prototype.onNextClick = function() {
 	}
 	else this.now++;
 	this.ani();
+}
+
+Slide.prototype.onInterval = function() {
+	this.$btnNext.trigger("click");
+}
+
+Slide.prototype.onMouseOver = function() {
+	clearInterval(this.interval);	
+}
+Slide.prototype.onMouseLeave = function() {
+	this.interval = setInterval(this.onInterval.bind(this), this.gapSpeed);
 }
 
 Slide.prototype.ani = function() {
