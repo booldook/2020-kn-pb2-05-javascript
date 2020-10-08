@@ -5,7 +5,7 @@
 .booldook-wrapper.booldook-fade {}
 .booldook-wrapper.booldook-hori .booldook-slide {flex: 100% 0 0;}
 .booldook-wrapper.booldook-vert .booldook-slide {}
-.booldook-wrapper.booldook-fade .booldook-slide {}
+.booldook-wrapper.booldook-fade .booldook-slide {position: absolute; width: 100%;}
 
 .booldook-btn {position: absolute; font-size: 10rem; color: #fff; cursor: pointer; text-shadow: 0 0 0.625rem rgba(0,0,0,0.5); top: 50%; transform: translateY(-50%); z-index: 9999; user-select: none; opacity: 0.2; transition: all 1s;}
 .booldook-btn:hover {opacity: 1;}
