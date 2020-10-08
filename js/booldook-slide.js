@@ -30,12 +30,15 @@ Slide.prototype.init = function(){
 	this.last = this.$slides.length - 1;
 	this.$btnPrev = $('<div class="booldook-btn booldook-prev">〈</div>').appendTo(this.$container);
 	this.$btnNext = $('<div class="booldook-btn booldook-next">〉</div>').appendTo(this.$container);
+
+	html = '<img src="'+this.slide[0]+'" style="width: 100%; opacity: 0;">';
+	this.$container.append(html);
 	
 	this.$btnPrev.click(this.onPrevClick.bind(this));
 	this.$btnNext.click(this.onNextClick.bind(this));
 	this.$container.mouseover(this.onMouseOver.bind(this));
 	this.$container.mouseleave(this.onMouseLeave.bind(this));
-	this.interval = setInterval(this.onInterval.bind(this), this.gapSpeed);
+	if(this.autoStart) this.interval = setInterval(this.onInterval.bind(this), this.gapSpeed);
 
 
 	this.startInit();
@@ -48,7 +51,7 @@ Slide.prototype.startInit = function() {
 Slide.prototype.onPrevClick= function(e) {
 	if(this.now == 0) {
 		this.now = this.last - 1;
-		this.$wrapper.css("left", -100*this.last+"%");
+		this.$wrapper.css(this.direction === 'hori'?'left':'top', -100*this.last+"%");
 	}
 	else this.now--;
 	this.ani();
@@ -57,7 +60,7 @@ Slide.prototype.onPrevClick= function(e) {
 Slide.prototype.onNextClick = function() {
 	if(this.now == this.last) {
 		this.now = 1;
-		this.$wrapper.css("left", 0);
+		this.$wrapper.css(this.direction === 'hori'?'left':'top', 0);
 	}
 	else this.now++;
 	this.ani();
@@ -68,12 +71,17 @@ Slide.prototype.onInterval = function() {
 }
 
 Slide.prototype.onMouseOver = function() {
-	clearInterval(this.interval);	
+	if(this.autoStart) clearInterval(this.interval);	
 }
 Slide.prototype.onMouseLeave = function() {
-	this.interval = setInterval(this.onInterval.bind(this), this.gapSpeed);
+	if(this.autoStart) this.interval = setInterval(this.onInterval.bind(this), this.gapSpeed);
 }
 
 Slide.prototype.ani = function() {
-	this.$wrapper.stop().animate({"left": -100*this.now+"%"}, this.aniSpeed);
+	if(this.direction === 'hori') {
+		this.$wrapper.stop().animate({"left": -100*this.now+"%"}, this.aniSpeed);
+	}
+	else if(this.direction === 'vert') {
+		this.$wrapper.stop().animate({"top": -100*this.now+"%"}, this.aniSpeed);
+	}
 }

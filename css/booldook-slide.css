@@ -1,4 +1,4 @@
-.booldook-wrapper {width: 100%; position: relative;}
+.booldook-wrapper {width: 100%; position: absolute; top: 0; left: 0;}
 .booldook-wrapper .img {width: 100%;}
 .booldook-wrapper.booldook-hori {display: flex;}
 .booldook-wrapper.booldook-vert {}

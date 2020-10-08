@@ -11,6 +11,13 @@ new Slide({
 	slide: ['../img/home-2.jpg', '../img/home-3.jpg', '../img/home-4.jpg'],
 	container: ".prd-stage",
 	direction: "vert",	// hori(default), vert, fade
+	autoStart: false,		// false(default), true
+});
+
+new Slide({
+	slide: ['../img/home-2.jpg', '../img/home-3.jpg', '../img/home-4.jpg'],
+	container: ".fade-stage",
+	direction: "fade",	// hori(default), vert, fade
 	autoStart: true,		// false(default), true
 });
 
