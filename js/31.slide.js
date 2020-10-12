@@ -15,7 +15,7 @@ new Slide({
 	pagerUse: true			// false(default), true
 });
 
-new Slide({
+var slide = new Slide({
 	slide: ['../img/home-2.jpg', '../img/home-3.jpg', '../img/home-4.jpg'],
 	container: ".prd-stage",
 	direction: "vert",
@@ -23,6 +23,8 @@ new Slide({
 	btnUse: true,
 	pagerUse: true
 });
+
+console.log(slide);
 
 new Slide({
 	slide: ['../img/home-2.jpg', '../img/home-3.jpg', '../img/home-4.jpg'],
