@@ -3,9 +3,11 @@
 .booldook-wrapper.booldook-hori {display: flex;}
 .booldook-wrapper.booldook-vert {}
 .booldook-wrapper.booldook-fade {}
-.booldook-wrapper.booldook-hori .booldook-slide {flex: 100% 0 0;}
-.booldook-wrapper.booldook-vert .booldook-slide {}
+.booldook-wrapper.booldook-hori .booldook-slide {flex: 100% 0 0; position: relative;}
+.booldook-wrapper.booldook-vert .booldook-slide {position: relative;}
 .booldook-wrapper.booldook-fade .booldook-slide {position: absolute; width: 100%;}
+
+.booldook-slide > div {position: absolute; top: 0; left: 0; color: #fff; font-size: 2rem; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; user-select: none;}
 
 .booldook-btn {position: absolute; font-size: 10rem; color: #fff; cursor: pointer; text-shadow: 0 0 0.625rem rgba(0,0,0,0.5); top: 50%; transform: translateY(-50%); z-index: 9999; user-select: none; opacity: 0.2; transition: all 1s;}
 .booldook-btn:hover {opacity: 1;}

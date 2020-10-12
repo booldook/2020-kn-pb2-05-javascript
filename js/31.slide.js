@@ -1,5 +1,11 @@
 new Slide({
 	slide: ['../img/slide-0.jpg', '../img/slide-1.jpg', '../img/slide-2.jpg', '../img/slide-3.jpg'],
+	slideTitle: [
+		'<div class="title">Hello Booldook1</div>',
+		'<div class="title">Hello Booldook2</div>',
+		'<div class="title">Hello Booldook3</div>',
+		'<div class="title">Hello Booldook4</div>'
+	],
 	container: ".main-stage",
 	direction: "hori",	// hori(default), vert, fade
 	gapSpeed: 4000,			// 3000(default)
