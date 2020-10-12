@@ -56,5 +56,42 @@
 
 	// moment 우리나라 표기로 변경하기
 	moment.locale('ko');
-	console.log(	moment().format('llll')	);
+	console.log(	moment().format('LT')	);   // 오후 2:33
+	console.log(	moment().format('LTS')	); // 오후 2:33:48
+	console.log(	moment().format('L')	);   // 2020.10.12.
+	console.log(	moment().format('LL')	);   // 2020년 10월 12일
+	console.log(	moment().format('LLL')	); // 2020년 10월 12일 오후 2:33
+	console.log(	moment().format('LLLL')	); // 2020년 10월 12일 월요일 오후 2:35
+
+	// moment ISO 표기로 변경하기
+	console.log(	moment().format('YYYY-MM-DD HH:mm:ss')	);
+	console.log(	moment().format('YYYY년 MM월 DD일 HH시 mm분 ss초')	);
+	console.log(	moment().format('YYYY년 MM월 DD일 HH시')	);
+
+	// 날짜, 시간 계산하기
+	// 1. 현 시간으로부터 20일 뒤
+	var dt = new Date().getTime() + 1000 * 60 * 60 * 24 * 20;
+	console.log(new Date(dt));
+
+	// years	 				=> y
+	// months	 				=> M
+	// weeks	 				=> w
+	// days	 					=> d
+	// hours	 				=> h
+	// minutes	 			=> m
+	// seconds	 			=> s
+	// milliseconds	 	=> ms
+	// moment().add(7, 'days').add(1, 'months'); // with chaining
+  // moment().add({days:7, months:1}); // with object literal
+	// moment().add(7, 'd').add(1, 'M'); // with chaining
+  // moment().add({d:7, M:1}); // with object literal
+
+	var dt = moment().add(20, 'd').format('YYYY-MM-DD HH:mm:ss');
+	console.log(dt);
+	
+	var dt = moment().add(-20, 'd').format('YYYY-MM-DD HH:mm:ss');
+	console.log(dt);
+
+	var dt = moment().subtract(20, 'd').format('YYYY-MM-DD HH:mm:ss');
+	console.log(dt);
 </script>
