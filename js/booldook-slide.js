@@ -4,9 +4,11 @@ var Slide = function(arg) {
 	this.container = arg.container;
 	this.$container = $(this.container);
 	this.direction = arg.direction || 'hori';
-	this.autoStart = arg.autoStart || false;
 	this.gapSpeed = arg.gapSpeed || 3000;
 	this.aniSpeed = arg.aniSpeed || 500;
+	this.autoUse = arg.autoUse || false;
+	this.btnUse = arg.btnUse || true;
+	this.pagerUse = arg.pagerUse || false;
 	
 	this.init();
 	return this;
@@ -32,18 +34,31 @@ Slide.prototype.init = function(){
 	}
 	if(this.direction === 'fade') $(this.$slides[0].clone()).appendTo(this.$wrapper);
 	this.last = this.$slides.length - 1;
-	this.$btnPrev = $('<div class="booldook-btn booldook-prev">〈</div>').appendTo(this.$container);
-	this.$btnNext = $('<div class="booldook-btn booldook-next">〉</div>').appendTo(this.$container);
+
+	if(this.btnUse) {
+		this.$btnPrev = $('<div class="booldook-btn booldook-prev">〈</div>').appendTo(this.$container);
+		this.$btnNext = $('<div class="booldook-btn booldook-next">〉</div>').appendTo(this.$container);
+		this.$btnPrev.click(this.onPrevClick.bind(this));
+		this.$btnNext.click(this.onNextClick.bind(this));
+	}
+
+	if(this.pagerUse) {
+		this.$pagers = $('<div class="booldook-pagers"></div>').appendTo(this.$container);
+		for(var i in this.slide) {
+			$('<div class="booldook-pager"></div>').appendTo(this.$pagers).click(this.onPagerClick.bind(this));
+		}
+		this.$pagers.find(".booldook-pager").eq(0).addClass("active");
+	}
+
+	if(this.autoUse) {
+		this.$container.mouseover(this.onMouseOver.bind(this));
+		this.$container.mouseleave(this.onMouseLeave.bind(this));
+		this.interval = setInterval(this.onInterval.bind(this), this.gapSpeed);
+	}
+
 
 	html = '<img src="'+this.slide[0]+'" style="width: 100%; opacity: 0;">';
 	this.$container.append(html);
-	
-	this.$btnPrev.click(this.onPrevClick.bind(this));
-	this.$btnNext.click(this.onNextClick.bind(this));
-	this.$container.mouseover(this.onMouseOver.bind(this));
-	this.$container.mouseleave(this.onMouseLeave.bind(this));
-	if(this.autoStart) this.interval = setInterval(this.onInterval.bind(this), this.gapSpeed);
-
 
 	this.startInit();
 }
@@ -76,18 +91,26 @@ Slide.prototype.onNextClick = function() {
 	this.ani();
 }
 
+Slide.prototype.onPagerClick =  function(e) {
+	this.now = $(e.currentTarget).index();
+	this.ani();
+}
+
 Slide.prototype.onInterval = function() {
 	this.$btnNext.trigger("click");
 }
 
 Slide.prototype.onMouseOver = function() {
-	if(this.autoStart) clearInterval(this.interval);	
+	clearInterval(this.interval);	
 }
 Slide.prototype.onMouseLeave = function() {
-	if(this.autoStart) this.interval = setInterval(this.onInterval.bind(this), this.gapSpeed);
+	this.interval = setInterval(this.onInterval.bind(this), this.gapSpeed);
 }
 
 Slide.prototype.ani = function() {
+	if(this.pagerUse) {
+		this.$pagers.find(".booldook-pager").eq(this.now).addClass("active").siblings().removeClass("active");
+	}
 	if(this.direction === 'hori') {
 		this.$wrapper.stop().animate({"left": -100*this.now+"%"}, this.aniSpeed);
 	}
