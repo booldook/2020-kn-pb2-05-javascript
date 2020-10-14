@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Step Slide css 예제</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/base.css">
+	<style>
+		.stage {width: 100%; position: relative; border: 2px solid blue;}
+		.booldook-wrapper .w100 {width: 100%; height: auto; border: 2px solid white;}
+		.booldook-wrapper .h100 {height: 100%; width: auto;}
+		.booldook-wrapper {position: relative; display: flex; border: 2px solid red;} 
+
+		/*
+		.booldook-wrapper {width: 140%; left: -20%;}
+		.booldook-wrapper .booldook-slide {flex: 14.28% 0 0;}
+
+		@media screen and (max-width: 1199px) {
+			.booldook-wrapper {width: 150%; left: -25%;}
+			.booldook-wrapper .booldook-slide {flex: 16.6666% 0 0;}
+		}
+		@media screen and (max-width: 991px) {
+			.booldook-wrapper {width: 166.6666%; left: -33.3333%;}
+			.booldook-wrapper .booldook-slide {flex: 20% 0 0;}
+		}
+		@media screen and (max-width: 767px) {
+			.booldook-wrapper {width: 200%; left: -50%;}
+			.booldook-wrapper .booldook-slide {flex: 25% 0 0;}
+		}
+		@media screen and (max-width: 575px) {
+			.booldook-wrapper {width: 300%; left: -100%;}
+			.booldook-wrapper .booldook-slide {flex: 33.3333% 0 0;}
+		}
+		*/
+	</style>
+	<script src="../js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="stage">
+			<div class="slide-wrap booldook-wrapper">
+				<div class="booldook-slide">
+					<img src="../img/home-1a.jpg" class="w100">
+				</div>
+				<div class="booldook-slide">
+					<img src="../img/slide-0.jpg" class="w100">
+				</div>
+				<div class="booldook-slide">
+					<img src="../img/slide-1.jpg" class="w100">
+				</div>
+				<div class="booldook-slide">
+					<img src="../img/home-2.jpg" class="w100">
+				</div>
+				<div class="booldook-slide">
+					<img src="../img/home-3.jpg" class="w100">
+				</div>
+				<div class="booldook-slide">
+					<img src="../img/slide-2.jpg" class="w100">
+				</div>
+				<div class="booldook-slide">
+					<img src="../img/slide-3.jpg" class="w100">
+				</div>
+				<!-- <div class="slide">
+					<img src="../img/home-4.jpg" class="w100">
+				</div>
+				<div class="slide">
+					<img src="../img/home-5a.jpg" class="w100">
+				</div> -->
+			</div>
+		</div>
+	</div>
+	<script>
+		var viewCount = 5;
+		var stepValue = {};
+
+		$(window).resize(onResize).trigger("resize");
+		function onResize() {
+			var w = $(this).innerWidth();
+			var cnt = viewCount;
+			if(w > 1199) stepCalc(cnt);
+			if(w <= 1199 && w > 991) stepCalc(cnt - 1);
+			if(w <= 991 && w > 767) stepCalc(cnt - 2);
+			if(w <= 767 && w > 575) stepCalc(cnt - 3);
+			if(w <= 575) stepCalc(cnt - 4);
+			
+			$(".booldook-wrapper").css({
+				"left": stepValue.leftValue + "%",
+				"width": stepValue.parentWidth + "%",
+			});
+			$(".booldook-slide").css("flex", stepValue.childWidth+"% 0 0");
+		}
+		function stepCalc(cnt) {
+			stepValue.leftValue = (-100/cnt).toFixed(4);
+			stepValue.parentWidth = (Math.abs(stepValue.leftValue) * 2 + 100).toFixed(4);
+			stepValue.childWidth = (100 / (cnt + 2)).toFixed(4) ;
+		}
+	</script>
+</body>
+</html>

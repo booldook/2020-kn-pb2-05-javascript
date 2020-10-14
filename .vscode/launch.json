@@ -1,0 +1,18 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Launch Chrome",
+			"request": "launch",
+			"type": "pwa-chrome",
+			"url": "http://127.0.0.1:5500/html/33.step-slide-style.html",
+			"webRoot": "${workspaceFolder}"
+		},
+		{
+			"type": "pwa-chrome",
+			"request": "launch",
+			"name": "Open 33.step-slide-style.html",
+			"file": "c:\\Users\\1\\Documents\\임덕규\\05.javascript\\html\\33.step-slide-style.html"
+		}
+	]
+}

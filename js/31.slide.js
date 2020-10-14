@@ -35,4 +35,27 @@ new Slide({
 	pagerUse: true
 });
 
+new Slide({
+	slide: ['../img/slide-0.jpg', '../img/slide-1.jpg', '../img/slide-2.jpg', '../img/slide-3.jpg', 'home-1a.jpg', 'home-2.jpg', 'home-3.jpg', 'home-4.jpg', 'home-5a.jpg'],
+	slideTitle: [
+		'<div class="title">1</div>',
+		'<div class="title">2</div>',
+		'<div class="title">3</div>',
+		'<div class="title">4</div>',
+		'<div class="title">5</div>',
+		'<div class="title">6</div>',
+		'<div class="title">7</div>',
+		'<div class="title">8</div>',
+		'<div class="title">9</div>'
+	],
+	container: ".step-stage",
+	direction: "step",	// hori(default), vert, fade
+	gapSpeed: 4000,			// 3000(default)
+	aniSpeed: 200,			// 500(default)
+	autoUse: true,			// false(default), true
+	btnUse: true,				// true(default), false
+	pagerUse: true,			// false(default), true
+	viewCount: 6,
+});
+
 
