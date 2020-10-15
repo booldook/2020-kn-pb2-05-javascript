@@ -8,9 +8,11 @@
 	<link rel="stylesheet" href="../css/base.css">
 	<style>
 		.stage {width: 100%; position: relative; border: 2px solid blue;}
-		.booldook-wrapper .w100 {width: 100%; height: auto; border: 2px solid white;}
+		.booldook-wrapper .w100 {width: 100%; height: auto;}
 		.booldook-wrapper .h100 {height: 100%; width: auto;}
-		.booldook-wrapper {position: relative; display: flex; border: 2px solid red;} 
+		.booldook-wrapper {position: relative; display: flex; border: 2px solid red;}
+		.booldook-slide {background-repeat: no-repeat; background-size: cover; background-position: center; margin: 0 0.5%;}
+		.booldook-slide > img.w100 {opacity: 0;} 
 
 		/*
 		.booldook-wrapper {width: 140%; left: -20%;}
@@ -41,21 +43,34 @@
 	<div class="container">
 		<div class="stage">
 			<div class="slide-wrap booldook-wrapper">
-				<div class="booldook-slide" style="background-image: url('../img/home-1a.jpg');"></div>
-				<div class="booldook-slide" style="background-image: url('../img/slide-0.jpg');"></div>
-				<div class="booldook-slide" style="background-image: url('../img/slide-1.jpg');"></div>
-				<div class="booldook-slide" style="background-image: url('../img/home-2.jpg');"></div>
-				<div class="booldook-slide" style="background-image: url('../img/home-3.jpg');"></div>
-				<div class="booldook-slide" style="background-image: url('../img/slide-2.jpg');"></div>
-				<div class="booldook-slide" style="background-image: url('../img/slide-3.jpg');"></div>
-				<div class="booldook-slide" style="background-image: url('../img/slide-4.jpg');"></div>
-				<div class="booldook-slide" style="background-image: url('../img/slide-5a.jpg');"></div>
+				<div class="booldook-slide" style="background-image: url('../img/home-1a.jpg');">
+					<img src="../img/home-1a.jpg" class="w100">
+				</div>
+				<div class="booldook-slide" style="background-image: url('../img/slide-0.jpg');">
+					<img src="../img/slide-0.jpg" class="w100">
+				</div>
+				<div class="booldook-slide" style="background-image: url('../img/slide-1.jpg');">
+					<img src="../img/slide-1.jpg" class="w100">
+				</div>
+				<div class="booldook-slide" style="background-image: url('../img/home-2.jpg');">
+					<img src="../img/home-2.jpg" class="w100">
+				</div>
+				<div class="booldook-slide" style="background-image: url('../img/home-3.jpg');">
+					<img src="../img/home-3.jpg" class="w100">
+				</div>
+				<div class="booldook-slide" style="background-image: url('../img/slide-2.jpg');">
+					<img src="../img/slide-2.jpg" class="w100">
+				</div>
+				<div class="booldook-slide" style="background-image: url('../img/slide-3.jpg');">
+					<img src="../img/slide-3.jpg" class="w100">
+				</div>
 			</div>
 		</div>
 	</div>
 	<script>
-		var viewCount = 5;
+		var viewCount = 3;
 		var stepValue = {};
+		var slideMargin = 16;
 		var slide = [
 		'../img/home-1a.jpg',
 		'../img/slide-0.jpg',
@@ -63,9 +78,7 @@
 		'../img/home-2.jpg',
 		'../img/home-3.jpg',
 		'../img/slide-2.jpg',
-		'../img/slide-3.jpg',
-		'../img/slide-4.jpg',
-		'../img/slide-5a.jpg'
+		'../img/slide-3.jpg'
 		];
 
 		$(window).resize(onResize).trigger("resize");
@@ -82,7 +95,10 @@
 				"left": stepValue.leftValue + "%",
 				"width": stepValue.parentWidth + "%",
 			});
-			$(".booldook-slide").css("flex", stepValue.childWidth+"% 0 0");
+			$(".booldook-slide").css({
+				"flex": "calc("+stepValue.childWidth+"% - "+slideMargin+"px) 0 0",
+				"margin": "0 " + slideMargin/2 + "px"
+			});
 		}
 		function stepCalc(cnt) {
 			stepValue.leftValue = (-100/cnt).toFixed(4);

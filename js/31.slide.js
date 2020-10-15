@@ -35,9 +35,9 @@ new Slide({
 	pagerUse: true
 });
 
-/*
+
 new Slide({
-	slide: ['../img/slide-0.jpg', '../img/slide-1.jpg', '../img/slide-2.jpg', '../img/slide-3.jpg', 'home-1a.jpg', 'home-2.jpg', 'home-3.jpg', 'home-4.jpg', 'home-5a.jpg'],
+	slide: ['../img/slide-0.jpg', '../img/slide-1.jpg', '../img/slide-2.jpg', '../img/slide-3.jpg', '../img/home-1a.jpg', '../img/home-2.jpg', '../img/home-3.jpg'],
 	slideTitle: [
 		'<div class="title">1</div>',
 		'<div class="title">2</div>',
@@ -45,9 +45,7 @@ new Slide({
 		'<div class="title">4</div>',
 		'<div class="title">5</div>',
 		'<div class="title">6</div>',
-		'<div class="title">7</div>',
-		'<div class="title">8</div>',
-		'<div class="title">9</div>'
+		'<div class="title">7</div>'
 	],
 	container: ".step-stage",
 	direction: "step",	// hori(default), vert, fade
@@ -56,8 +54,9 @@ new Slide({
 	autoUse: true,			// false(default), true
 	btnUse: true,				// true(default), false
 	pagerUse: true,			// false(default), true
-	slideCnt: 5,
+	slideCnt: 5,				// 5(default)
+	slideMargin: 16			// 0(default), px단위
 });
-*/
+
 
 
