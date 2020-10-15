@@ -1,12 +1,15 @@
 .booldook-wrapper {width: 100%; position: absolute; top: 0; left: 0;}
-.booldook-wrapper .img {width: 100%;}
+.booldook-wrapper .w100 {width: 100%; height: auto;}
+.booldook-wrapper .h100 {height: 100%; width: auto;}
 .booldook-wrapper.booldook-hori {display: flex;}
 .booldook-wrapper.booldook-vert {}
 .booldook-wrapper.booldook-fade {}
-.booldook-wrapper.booldook-step {}
+.booldook-wrapper.booldook-step {position: relative; display: flex;}
 .booldook-wrapper.booldook-hori .booldook-slide {flex: 100% 0 0; position: relative;}
 .booldook-wrapper.booldook-vert .booldook-slide {position: relative;}
 .booldook-wrapper.booldook-fade .booldook-slide {position: absolute; width: 100%;}
+.booldook-wrapper.booldook-step .booldook-slide {background-repeat: no-repeat; background-size: cover; background-position: center;}
+.booldook-wrapper.booldook-step .booldook-slide > img.w100 {opacity: 0;}
 
 .booldook-slide > div {position: absolute; top: 0; left: 0; color: #fff; font-size: 2rem; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; user-select: none;}
 
