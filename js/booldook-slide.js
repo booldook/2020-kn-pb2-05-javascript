@@ -28,18 +28,17 @@ var Slide = function (arg) {
 Slide.prototype.init = function () {
 
 	// 사용자가 지정한 stage에 css 적용
-	this.$container.css({
-		"position": "relative",
-		"overflow": "hidden"
-	});
+	this.$container.css({ "position": "relative", "overflow": "hidden" });
 
 	// stage에 슬라이드를 감싸는 booldook-wrapper를 생성
 	this.$wrapper = $('<div class="booldook-wrapper booldook-' + this.direction + '"></div>').appendTo(this.$container);
 
 	// booldook-wrapper에 booldook-slide들을 만드는 과정
 	for (var i = 0, html = ''; i < this.slide.length; i++) {
-		html = '<div class="booldook-slide">';
-		html = '<div class="booldook-slide" style="background-image: url(\'' + this.slide[i] + '\');">';
+		if(this.direction == 'step') 
+			html = '<div class="booldook-slide" style="background-image: url(\'' + this.slide[i] + '\');">';
+		else
+			html = '<div class="booldook-slide">';
 		html += '<img src="' + this.slide[i] + '" class="w100">';
 		if (this.title && this.title[i]) html += this.title[i];
 		html += '</div>';
@@ -51,7 +50,7 @@ Slide.prototype.init = function () {
 			this.$slides.push($(html).appendTo(this.$wrapper));
 		}
 
-		// fade형은 this.$slides에만 태그를 넣어놓는다.
+		// fade형, step형은 this.$slides에만 태그를 넣어놓는다.
 		if (this.direction === 'fade' || this.direction == 'step') this.$slides.push($(html));
 	}
 	// for 끝
