@@ -106,8 +106,8 @@ Slide.prototype.init = function () {
 		html = '<img src="' + this.slide[0] + '" style="width: 100%; opacity: 0;">';
 		this.$container.append(html);
 	}
-
-	if (this.direction == 'step') {
+	else {
+		this.startInit();
 		$(window).resize(function () {
 			var w = $(window).innerWidth();
 			var cnt = this.slideCnt;
@@ -121,13 +121,11 @@ Slide.prototype.init = function () {
 				"left": this.slideValue.leftValue + "%",
 				"width": this.slideValue.parentWidth + "%",
 			});
-			this.$wrapper.css({
+			this.$wrapper.find('.booldook-slide').css({
 				"flex": "calc(" + this.slideValue.childWidth + "% - " + this.slideMargin + "px) 0 0",
 				"margin": "0 " + this.slideMargin / 2 + "px"
 			});
 		}.bind(this)).trigger("resize");
-
-		this.startInit();
 	}
 }
 
