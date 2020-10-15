@@ -9,7 +9,7 @@ new Slide({
 	container: ".main-stage",
 	direction: "hori",	// hori(default), vert, fade
 	gapSpeed: 4000,			// 3000(default)
-	aniSpeed: 400,			// 500(default)
+	aniSpeed: 500,			// 500(default)
 	autoUse: true,			// false(default), true
 	btnUse: true,				// true(default), false
 	pagerUse: true			// false(default), true
@@ -35,6 +35,7 @@ new Slide({
 	pagerUse: true
 });
 
+/*
 new Slide({
 	slide: ['../img/slide-0.jpg', '../img/slide-1.jpg', '../img/slide-2.jpg', '../img/slide-3.jpg', 'home-1a.jpg', 'home-2.jpg', 'home-3.jpg', 'home-4.jpg', 'home-5a.jpg'],
 	slideTitle: [
@@ -55,7 +56,8 @@ new Slide({
 	autoUse: true,			// false(default), true
 	btnUse: true,				// true(default), false
 	pagerUse: true,			// false(default), true
-	viewCount: 6,
+	slideCnt: 5,
 });
+*/
 
 

@@ -2,17 +2,18 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Launch Chrome",
+			"name": "34.this",
 			"request": "launch",
 			"type": "pwa-chrome",
-			"url": "http://127.0.0.1:5500/html/33.step-slide-style.html",
+			"url": "http://127.0.0.1:5500/html/34.this.html",
 			"webRoot": "${workspaceFolder}"
 		},
 		{
-			"type": "pwa-chrome",
+			"name": "31.slide",
 			"request": "launch",
-			"name": "Open 33.step-slide-style.html",
-			"file": "c:\\Users\\1\\Documents\\임덕규\\05.javascript\\html\\33.step-slide-style.html"
+			"type": "pwa-chrome",
+			"url": "http://127.0.0.1:5500/html/31.slide.html",
+			"webRoot": "${workspaceFolder}"
 		}
 	]
 }

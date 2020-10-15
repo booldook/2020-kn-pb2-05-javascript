@@ -3,6 +3,7 @@
 .booldook-wrapper.booldook-hori {display: flex;}
 .booldook-wrapper.booldook-vert {}
 .booldook-wrapper.booldook-fade {}
+.booldook-wrapper.booldook-step {}
 .booldook-wrapper.booldook-hori .booldook-slide {flex: 100% 0 0; position: relative;}
 .booldook-wrapper.booldook-vert .booldook-slide {position: relative;}
 .booldook-wrapper.booldook-fade .booldook-slide {position: absolute; width: 100%;}

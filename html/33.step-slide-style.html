@@ -35,54 +35,48 @@
 		*/
 	</style>
 	<script src="../js/jquery-3.5.1.min.js"></script>
+	<script src="../js/imagesloaded.pkgd.min.js"></script>
 </head>
 <body>
 	<div class="container">
 		<div class="stage">
 			<div class="slide-wrap booldook-wrapper">
-				<div class="booldook-slide">
-					<img src="../img/home-1a.jpg" class="w100">
-				</div>
-				<div class="booldook-slide">
-					<img src="../img/slide-0.jpg" class="w100">
-				</div>
-				<div class="booldook-slide">
-					<img src="../img/slide-1.jpg" class="w100">
-				</div>
-				<div class="booldook-slide">
-					<img src="../img/home-2.jpg" class="w100">
-				</div>
-				<div class="booldook-slide">
-					<img src="../img/home-3.jpg" class="w100">
-				</div>
-				<div class="booldook-slide">
-					<img src="../img/slide-2.jpg" class="w100">
-				</div>
-				<div class="booldook-slide">
-					<img src="../img/slide-3.jpg" class="w100">
-				</div>
-				<!-- <div class="slide">
-					<img src="../img/home-4.jpg" class="w100">
-				</div>
-				<div class="slide">
-					<img src="../img/home-5a.jpg" class="w100">
-				</div> -->
+				<div class="booldook-slide" style="background-image: url('../img/home-1a.jpg');"></div>
+				<div class="booldook-slide" style="background-image: url('../img/slide-0.jpg');"></div>
+				<div class="booldook-slide" style="background-image: url('../img/slide-1.jpg');"></div>
+				<div class="booldook-slide" style="background-image: url('../img/home-2.jpg');"></div>
+				<div class="booldook-slide" style="background-image: url('../img/home-3.jpg');"></div>
+				<div class="booldook-slide" style="background-image: url('../img/slide-2.jpg');"></div>
+				<div class="booldook-slide" style="background-image: url('../img/slide-3.jpg');"></div>
+				<div class="booldook-slide" style="background-image: url('../img/slide-4.jpg');"></div>
+				<div class="booldook-slide" style="background-image: url('../img/slide-5a.jpg');"></div>
 			</div>
 		</div>
 	</div>
 	<script>
 		var viewCount = 5;
 		var stepValue = {};
+		var slide = [
+		'../img/home-1a.jpg',
+		'../img/slide-0.jpg',
+		'../img/slide-1.jpg',
+		'../img/home-2.jpg',
+		'../img/home-3.jpg',
+		'../img/slide-2.jpg',
+		'../img/slide-3.jpg',
+		'../img/slide-4.jpg',
+		'../img/slide-5a.jpg'
+		];
 
 		$(window).resize(onResize).trigger("resize");
 		function onResize() {
 			var w = $(this).innerWidth();
 			var cnt = viewCount;
 			if(w > 1199) stepCalc(cnt);
-			if(w <= 1199 && w > 991) stepCalc(cnt - 1);
-			if(w <= 991 && w > 767) stepCalc(cnt - 2);
-			if(w <= 767 && w > 575) stepCalc(cnt - 3);
-			if(w <= 575) stepCalc(cnt - 4);
+			if(w <= 1199 && w > 991) stepCalc(cnt - 1 < 1 ? 1 : cnt - 1);
+			if(w <= 991 && w > 767) stepCalc(cnt - 2 < 1 ? 1 : cnt - 2);
+			if(w <= 767 && w > 575) stepCalc(cnt - 3 < 1 ? 1 : cnt - 3);
+			if(w <= 575) stepCalc(cnt - 4 < 1 ? 1 : cnt - 4);
 			
 			$(".booldook-wrapper").css({
 				"left": stepValue.leftValue + "%",
