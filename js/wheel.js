@@ -1,43 +1,39 @@
-var WheelFn = (function() {
-	function WheelFn(el, cb) {
+var Wheel = (function() {
+	function Wheel(el, cb) {
 		var elem = el;
 		var marker = true;
 		var delta;
 		var direction;
-		var interval = 50;
+		var interval = 20;
 		var counter1 = 0;
 		var counter2;
-		var now;
 
-		elem.addEventListener('wheel', wheel);
+		elem.addEventListener('wheel', onWheel, {passive: true});
 
-		function wheel(e){
-			counter1 += 1;
+		function onWheel(e){
+			counter1++;
 			delta = e.deltaY;
-			if (delta > 0) {direction = 'up'} else {direction = 'down'}
-			if (marker) {wheelStart()}
+			direction = delta > 0 ? 'down' : 'up';
+			if(marker) wheelStart(e);
 			return false;
 		}
-		function wheelStart(){
+		function wheelStart(e){
 			marker = false;
-			wheelAct();
+			wheelAct(e);
 		}
-		function wheelAct(){
+		function wheelAct(e){
 			counter2 = counter1;
 			setTimeout(function(){
-				if (counter2 == counter1) {
-					wheelEnd();
-				} else {
-					wheelAct();
-				}
-			},interval);
+				if (counter2 == counter1) wheelEnd(e);
+				else wheelAct(e);
+			}, interval);
 		}
-		function wheelEnd(){
-			cb(direction);
+		function wheelEnd(e){
+			cb(direction, e);
 			marker = true;
 			counter1 = 0;
 			counter2 = false;
 		}
 	}
-	return WheelFn;
+	return Wheel;
 })();

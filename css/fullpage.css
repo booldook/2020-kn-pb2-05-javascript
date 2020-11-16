@@ -1,0 +1,7 @@
+html, body {width: 100%; overflow: hidden;}
+.page {width: 100%; height: 100vh; color: #fff; display: flex; justify-content: center; align-items: center;}
+.page1 {background-color: steelblue;}
+.page2 {background-color: #532d99;}
+.page3 {background-color: #691322;}
+.page4 {background-color: #7e7023;}
+.page5 {background-color: #2e883d;}
